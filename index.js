@@ -1,8 +1,8 @@
-import { defineConfig } from 'astro/config';
+//import { defineConfig } from 'astro/config';
 
-export default defineConfig({
-base: '/jollyroom/', // <-- important for GitHub Pages paths
-});
+//export default defineConfig({
+//base: '/jollyroom/', // <-- important for GitHub Pages paths
+//});
 //ran this npm install --save-dev gh-pages
 
 if (typeof window !== "undefined") {
