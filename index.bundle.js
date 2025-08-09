@@ -2,11 +2,11 @@ if (typeof window !== "undefined") {
     // This runs only in the browser
     // CTA Buttons ---------------------------------------------->
 
-    let CTA_1 = document.querySelector("#CTA-1");
+    document.querySelector("#CTA-1");
 
     // Gallery Items
 
-    const galleryImageBaseURL = "./images/"
+    const galleryImageBaseURL = "./images/";
 
     const galleries = [
         // Gallery 1
@@ -14,9 +14,7 @@ if (typeof window !== "undefined") {
         [`children_inflatableCastle_distance.webp`, `children_slide.webp`, `children_playtoys.webp`, `children_entrance.webp`, `games_boardgames.webp`, `games_tableFootball.webp`],
         [`poolTable_pingPong.webp`, `poolTable_pool.webp`, `poolTable_airHockey.webp`, `poolTable_exchangeable.webp`],
         [`mahjongTable_mahjong_closeUp.webp`, `mahjongTable_mahjong_distance.webp`, `mahjongTable_poker.webp`, `mahjongTable_distance.webp`],
-    ]
-
-    var galleryHasBeenSet = false;
+    ];
 
     // When first loading the site
     function setGallery () {
@@ -39,16 +37,14 @@ if (typeof window !== "undefined") {
                     break;
             }
             updateGalleryImages(element, newGallery);
-        })
-        
-        galleryHasBeenSet = true;
+        });
         console.log("loading");
     }
 
     function updateGalleryImages(gallery, newGallery) {
         gallery.querySelectorAll(".galleryItem img").forEach((element, i) => {
             element.src = newGallery[i];
-        })
+        });
     }
 
     setGallery();
@@ -85,16 +81,16 @@ if (typeof window !== "undefined") {
         let lastImageURL = lastImage.split('/');
         let lastImageName = lastImageURL[firstImageURL.length - 1];
 
-        updatedGallery = returnGallery(galleryNum, direction, firstImageName, lastImageName)
+        updatedGallery = returnGallery(galleryNum, direction, firstImageName, lastImageName);
 
         for (let i = 0; i < 3; i++) {
             imgToUpdate = htmlObj.querySelectorAll(".galleryGrid .galleryItem img");
             imgToUpdate[i].src = updatedGallery[i];
         }
-    }
+    };
 
     function returnGallery (id, direction, firstImageName, lastImageName) {
-        var galleryToReturn = []
+        var galleryToReturn = [];
         if (direction === "left") {
             // Find out where we want to start based on current image shown as first in HTML
             var startIndex = galleries[id].findIndex((element) => { return element === firstImageName; });
@@ -172,3 +168,4 @@ if (typeof window !== "undefined") {
         return returnArr;
     }
 }
+//# sourceMappingURL=index.bundle.js.map
