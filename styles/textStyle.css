@@ -1,0 +1,45 @@
+.title-bigRegular {
+    font-family: "outfit";
+    font-weight: 400;
+    font-size: 2.75rem;
+}
+
+.title-bigBold {
+    font-family: "outfit";
+    font-weight: 700;
+    font-size: 2.75rem;
+}
+
+.title-cursive-bigRegular {
+    font-family: "Playwrite US Trad", cursive;
+    font-style: normal;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+
+.subtitle-bigLight {
+    font-family: "outfit";
+    font-weight: 300;
+    font-size: 1.85rem;
+    color: var(--darkMaroon);
+}
+
+.label-bigMedium {
+    font-family: "outfit";
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.label-smallLight {
+    font-family: "outfit";
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.content-bigRegular {
+    font-family: "outfit";
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: var(--black);
+}
