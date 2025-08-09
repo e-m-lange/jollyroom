@@ -13,7 +13,7 @@ if (typeof window !== "undefined") {
 
     // Gallery Items
 
-    const galleryImageBaseURL = "../images/"
+    const galleryImageBaseURL = "./images/"
 
     const galleries = [
         // Gallery 1

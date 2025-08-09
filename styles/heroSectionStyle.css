@@ -24,7 +24,7 @@
   left: 0;
   width: 1.25rem; /* Set your custom size */
   height: 1.25rem;
-  background-image: url('../icons/bulletPoint_roughStar.svg');
+  background-image: url('./icons/bulletPoint_roughStar.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
