@@ -1,10 +1,3 @@
-//import { defineConfig } from 'astro/config';
-
-//export default defineConfig({
-//base: '/jollyroom/', // <-- important for GitHub Pages paths
-//});
-//ran this npm install --save-dev gh-pages
-
 if (typeof window !== "undefined") {
     // This runs only in the browser
     // CTA Buttons ---------------------------------------------->

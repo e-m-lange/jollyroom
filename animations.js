@@ -1,8 +1,8 @@
  // alterntaive import gsap from "https://cdn.skypack.dev/gsap"; using RollUp!
 //https://gsap.com/community/forums/topic/37876-uncaught-typeerror-failed-to-resolve-module-specifier-gsapdistgsap/
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import gsap from './node_modules/gsap/all.js';
+import { ScrollTrigger } from "./node_modules/gsap/ScrollTrigger.js";
+import { ScrollSmoother } from "./node_modules/gsap/ScrollSmoother.js";
 
 // Register Plugins
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
