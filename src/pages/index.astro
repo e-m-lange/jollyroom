@@ -1,5 +1,5 @@
 ---
-
+import gsap from 'gsap';
 ---
 
 <!DOCTYPE html>
@@ -207,6 +207,28 @@
                         <p id="text_gallery4_2" class="content-bigRegular">2 mic provided...</p>
                     </div>
                 </section>
+
+                <section id="gallery5" class="gallery">
+                    <div class="galleryGrid">
+                        <button class="galleryLeftArrow galleryArrowBtn" onclick="changeGalleryImg('gallery5', 'left')"> <img class="noHover" src="./icons/galleryLeftArrow.svg"/> <img class="hover" src="./icons/galleryLeftArrowHover.svg"/> </button>
+
+                        <div id="galleryItem1" class="galleryItem1 galleryItem">
+                            <img src="" alt="karaoke"/>
+                        </div>
+                        <div id="galleryItem2" class="galleryItem2 galleryItem">
+                            <img src="" alt="karaoke"/>
+                        </div>
+                        <div id="galleryItem3" class="galleryItem3 galleryItem">
+                            <img src="" alt="karaoke"/>
+                        </div>
+
+                        <button class="galleryRightArrow galleryArrowBtn" onclick="changeGalleryImg('gallery5', 'right')"> <img class="noHover" src="./icons/galleryRightArrow.svg"/> <img class="hover" src="./icons/galleryRightArrowHover.svg"/> </button>
+                    </div>
+                    <div class="galleryText">
+                        <h3 id="text_gallery5_1" class="title-bigRegular">Amenities</h3>
+                        <p id="text_gallery5_2" class="content-bigRegular">2 mic provided...</p>
+                    </div>
+                </section>
             </section>
 
             <section id="locationContainer">
@@ -239,7 +261,7 @@
             </div>
         </footer>
 
-        <script type="module" src="./index.js"></script>
-        <script type="module" src="./animations.js"></script>
+        <script type="module" src="./index.bundle.js" is:inline></script>
+        <script type="module" src="./animations.bundle.js" is:inline></script>
     </body>
 </html>
