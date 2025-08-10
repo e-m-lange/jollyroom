@@ -14,6 +14,7 @@ if (typeof window !== "undefined") {
         [`children_inflatableCastle_distance.webp`, `children_slide.webp`, `children_playtoys.webp`, `children_entrance.webp`, `games_boardgames.webp`, `games_tableFootball.webp`],
         [`poolTable_pingPong.webp`, `poolTable_pool.webp`, `poolTable_airHockey.webp`, `poolTable_exchangeable.webp`],
         [`mahjongTable_mahjong_closeUp.webp`, `mahjongTable_mahjong_distance.webp`, `mahjongTable_poker.webp`, `mahjongTable_distance.webp`],
+        [`amenities_kitchen_distanceFar.webp`, `amenities_kitchen_distanceClose.webp`, `amenities_fridge.webp`, `amenities_breastfeeding.webp`, `amenities_shoerack.webp`],
     ];
 
     // When first loading the site
@@ -34,6 +35,9 @@ if (typeof window !== "undefined") {
                     break;
                 case "gallery4":
                     newGallery = [galleryImageBaseURL + galleries[3][0], galleryImageBaseURL + galleries[3][1], galleryImageBaseURL + galleries[3][2]];
+                    break;
+                case "gallery5":
+                    newGallery = [galleryImageBaseURL + galleries[4][0], galleryImageBaseURL + galleries[4][1], galleryImageBaseURL + galleries[4][2]];
                     break;
             }
             updateGalleryImages(element, newGallery);
@@ -68,6 +72,9 @@ if (typeof window !== "undefined") {
                 break;
             case "gallery4":
                 galleryNum = 3;
+                break;
+            case "gallery5":
+                galleryNum = 4;
                 break;
         }
 
