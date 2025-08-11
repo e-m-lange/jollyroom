@@ -40,8 +40,8 @@ gsap.fromTo(bg3Path, {
 
 // Fade in and up the hero images
 let heroGridItem_A = document.querySelector(".heroGridItem-a");
-let heroGridItem_B = document.querySelector(".heroGridItem-b");
-let heroGridItem_C = document.querySelector(".heroGridItem-c");
+let heroGridItem_B = document.querySelector(".heroGridItem-c");
+let heroGridItem_C = document.querySelector(".heroGridItem-d");
 
 gsap.fromTo(heroGridItem_A, 
     {
