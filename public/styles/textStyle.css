@@ -43,3 +43,13 @@
     font-size: 1.15rem;
     color: var(--black);
 }
+
+@media (max-width: 1300px) {
+    html {
+        font-size: 80%;
+    }
+
+    .content-bigRegular {
+        font-size: 1.25rem;
+    }
+}

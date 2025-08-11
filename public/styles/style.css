@@ -431,8 +431,30 @@ li {
 }
 
 @media (max-width: 1300px) {
-    html {
-        font-size: 80%;
+    #background-2 {
+        width: 100%;
+        top: 60vh;
+    }
+
+    #background-2 svg{
+        width: 45%;
+        height: 45%;
+    }
+
+    #background-2 path{
+        stroke-width: 6;
+    }
+
+    #background-3 svg{
+        scale: 1.15;
+    }
+
+    #background-3 path{
+        stroke-width: 6;
+    }
+
+    .comprehensiveList {
+        margin: 3.5rem 2.5rem 3.5rem 2.5rem;
     }
 }
 
@@ -454,7 +476,6 @@ li {
     }
 
     .comprehensiveList {
-        margin: 3.5rem 2.5rem 3.5rem 2.5rem;
         padding-top: 2rem;
         width: 100%;
     }
@@ -509,15 +530,20 @@ li {
     }
 
     #background-2 path{
-        stroke-width: 10;
+        stroke-width: 6;
     }
 
     #background-3 svg{
-        scale: 1.65;
+        scale: 1.35;
     }
 
     #background-3 path{
-        stroke-width: 10;
+        stroke-width: 6;
+    }
+
+    #background-3 {
+        position: relative;
+        top: -36rem;
     }
     
     .galleryText {
@@ -536,12 +562,40 @@ li {
 }
 
 @media (max-width: 630px) {
+    #background-2 path{
+        stroke-width: 12;
+    }
+
+    #background-3 path{
+        stroke-width: 12;
+    }
+
+    .comprehensiveList ul {
+        padding-left: 0;
+    }
+
+    .comprehensiveList li {
+        min-width: 9.5rem;
+
+        padding-left: 1.5em;         /* indent text */
+        text-indent: -1.5em;         /* pull bullet back into the margin */
+    }
+
+    #areasToEnjoy {
+        padding: 4rem 0rem 2rem
+    }
+
     .galleryGrid {
         grid-template-columns: 3fr 1fr 3fr;
         grid-template-rows: 7fr 1fr 2fr;
         min-width: 100%;
         max-width: 100%;
     }
+
+    .galleryText h3 {
+        margin-bottom: 1.5rem;
+    }
+
     .galleryArrowBtn {
         align-self: start;
     }
@@ -551,9 +605,10 @@ li {
         grid-column-end: 2;
         grid-row-start: 2;
         grid-row-end: 3;
-        z-index: 1;
+        z-index: 2;
 
-        width: 25%
+        top: -1.5rem;
+        width: 5rem;
     }
 
     .galleryRightArrow {
@@ -561,9 +616,10 @@ li {
         grid-column-end: 4;
         grid-row-start: 2;
         grid-row-end: 3;
-        z-index: 1;
-
-        width: 25%
+        z-index: 2;
+        
+        top: -1.5rem;
+        width: 5rem;
     }
 
     .galleryItem1 {
@@ -575,7 +631,7 @@ li {
 
     .galleryItem1 img {
         aspect-ratio: 16/10;
-        width: 30%;
+        width: 35%;
     }
 
     .galleryItem2 {
@@ -600,7 +656,11 @@ li {
 
     .galleryItem3 img {
         aspect-ratio: 16/10;
-        width: 30%;
+        width: 35%;
+    }
+
+    #finalCTA {
+        margin: 5rem 2.5rem 5rem 2.5rem
     }
 
 }
