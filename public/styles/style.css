@@ -516,7 +516,7 @@ li {
     }
 
     #background-1 {
-        top: 30rem;
+        top: 85vh;
     }
 
     #background-2 {
@@ -562,6 +562,15 @@ li {
 }
 
 @media (max-width: 630px) {
+    #background-1 {
+        top: 5%;
+    }
+
+    #background-2 {
+        width: 100%;
+        top: 115vh;
+    }
+
     #background-2 path{
         stroke-width: 12;
     }
