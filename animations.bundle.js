@@ -10475,7 +10475,8 @@ ScrollSmoother.get = function () {
 
 _getGSAP() && gsap.registerPlugin(ScrollSmoother);
 
-// alterntaive import gsap from "https://cdn.skypack.dev/gsap"; using RollUp!
+// alterntaive import gsap from "https://cdn.skypack.dev/gsap"; using RollUp!! npx rollup -c
+//https://gsap.com/community/forums/topic/37876-uncaught-typeerror-failed-to-resolve-module-specifier-gsapdistgsap/
 
 console.log("GSAP animation script loaded");
 
@@ -10484,215 +10485,149 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function runAnimation() {
-// Register Plugins
-gsapWithCSS.registerPlugin(ScrollTrigger$1, ScrollSmoother);
+    // Register Plugins
+    gsapWithCSS.registerPlugin(ScrollTrigger$1, ScrollSmoother);
 
-   // safety check
-let bg3SVG = document.querySelector("#background-3");
-let bg3Path = bg3SVG.querySelector("path");
-const bg3PathLength = bg3Path.getTotalLength();
-gsapWithCSS.set(bg3Path, {strokeDasharray: bg3PathLength});
-gsapWithCSS.fromTo(bg3Path, {
-    strokeDashoffset: bg3PathLength // will start from where the dash gap starts, hence looks invisible and undrawn
-    },
-    {
-        strokeDashoffset: 0, // eventually brings the non gap part into view, giving a drawing effect
-        //ease:"none",
-        //duration: 10, this would make it timed (the drawing effect)
-        scrollTrigger: {
-            trigger: "#background-3", // starts counting the scroll once the container is in view
-            start: "top top",
-            end: "bottom bottom",
-            ease: 'none',
-            scrub: 11, // this ties the animation progress to scroll position //true for same speed=
-        }
+    function startAnimations() {
+        bg3PathDraw();
+        setHeroAnimations();
+        connectAllGalleryButtons();
+        gallerySlide();
     }
-);
 
-// Hero Section ---------------------------------------------->
+    startAnimations();
 
-// Fade in and up the hero images
-let heroGridItem_A = document.querySelector(".heroGridItem-a");
-let heroGridItem_B = document.querySelector(".heroGridItem-c");
-let heroGridItem_C = document.querySelector(".heroGridItem-d");
+    // Hero Section ---------------------------------------------->
+    // Fade in and up the hero images
+    function setHeroAnimations() {
+        let heroGridItems = document.querySelectorAll(".heroGridItem-a, .heroGridItem-c, .heroGridItem-d");
+        let transformY = [150, 100, 250]; // So they move at different paces, staggered effect
+        let durations = [0.8, 0.6, 0.85]; // Staggered effect
 
-gsapWithCSS.fromTo(heroGridItem_A, 
-    {
-        y: 150,
-        opacity: '0',      
-    },
-    {
-        y: 0,
-        opacity: '1',
-        duration: 0.8,
-    }
-);
-
-gsapWithCSS.fromTo(heroGridItem_B, 
-    {
-        y: 100,
-        opacity: '0'
-    },
-    {
-        y: 0,
-        opacity: '1',
-        duration: 0.6,
-    }
-);
-
-gsapWithCSS.fromTo(heroGridItem_C, 
-    {
-        y: 250,
-        opacity: '0'
-    },
-    {
-        y: 0,
-        opacity: '1',
-        duration: 0.85,
-    }
-);
-
-// Gallery --------------------------------------
-
-function connectAllGalleryButtons() {
-    let galleryArrowBtns = document.querySelectorAll(".galleryRightArrow");
-    //console.log(galleryArrowBtns);
-    galleryArrowBtns.forEach(element => {
-        element.addEventListener("click", function() { 
-            {
-                gsapWithCSS.fromTo( 
-                    element,
-                    {
-                        y: 30,
-                        x: 30,
-                        rotation: 15,
-                    },
-                    {
-                        y: 0,
-                        x: 0,
-                        rotation: 0,
-                        duration: 0.4,
-                    }
-                );
-            }
-
-            element.parentElement.querySelectorAll(".galleryItem1, .galleryItem3").forEach(itemElement => {
-                gsapWithCSS.fromTo( 
-                    itemElement,
-                    {
-                        opacity: 0,
-                    },
-                    {
-                        opacity: 1,
-                        duration: 0.4,
-                    }
-                );
+        heroGridItems.forEach((heroItem, i) => {
+            gsapWithCSS.fromTo(heroItem, {
+                y: transformY[i],
+                opacity: '0',
+            },{
+                y: 0,
+                opacity: '1',
+                duration: durations[i],
             });
-
-            gsapWithCSS.fromTo( 
-                element.parentElement.querySelector(".galleryItem2"),
-                {
-                    y: 30,
-                    scale: 0.95,
-                    rotation: 2,
-                },
-                {
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.4,
-                }
-            );
         });
+    }
 
-        console.log(element.parentElement.parentElement.id); // risky, but to get the gallery ID
-    });
-
-    // For the left arrows
-    let galleryArrowLeftBtns = document.querySelectorAll(".galleryLeftArrow");
-    console.log(galleryArrowBtns);
-    galleryArrowLeftBtns.forEach(element => {
-        element.addEventListener("click", function() { 
-            {
-                gsapWithCSS.fromTo( 
-                    element,
-                    {
-                        y: 30,
-                        x: -30,
-                        rotation: -15,
-                    },
-                    {
-                        y: 0,
-                        x: 0,
-                        rotation: 0,
-                        duration: 0.4,
-                    }
-                );
-            }
-
-            element.parentElement.querySelectorAll(".galleryItem1, .galleryItem3").forEach(itemElement => {
-                gsapWithCSS.fromTo( 
-                    itemElement,
-                    {
-                        opacity: 0,
-                    },
-                    {
-                        opacity: 1,
-                        duration: 0.4,
-                    }
-                );
-            });
-
-            gsapWithCSS.fromTo( 
-                element.parentElement.querySelector(".galleryItem2"),
-                {
-                    y: 30,
-                    scale: 0.95,
-                    rotation: -2,
-                },
-                {
-                    y: 0,
-                    scale: 1,
-                    rotation: 0,
-                    duration: 0.4,
-                }
-            );
-        });
-    });
-}
-
-connectAllGalleryButtons();
-
-function isFirefox() {
-return navigator.userAgent.toLowerCase().indexOf('firefox') > -1; // for the jittery performance
-}
-
-// Gallery transition as you scroll
-function gallerySlide() {
-    var galleries = document.querySelectorAll(".gallery");
-
-    galleries.forEach((gallery, i) => {
-        gsapWithCSS.timeline({
+    // Areas to Explore Section ---------------------------------------------->
+    // Draw the line that appears in the 'Areas to Explore' section
+    function bg3PathDraw () {
+        let bg3Path = document.querySelector("#background-3 path");
+        const bg3PathLength = bg3Path.getTotalLength();
+        gsapWithCSS.set(bg3Path, {strokeDasharray: bg3PathLength}); // Set the length of the dash to the total length of the svg which is hidden/shown by moving this gap
+        gsapWithCSS.fromTo(bg3Path, {
+            strokeDashoffset: bg3PathLength // will start from where the dash gap starts, hence looks invisible and undrawn
+            }, {
+            strokeDashoffset: 0, // eventually brings the non gap part into view, giving a drawing effect
+            //ease:"none",
+            //duration: 10, this would make it timed (the drawing effect)
             scrollTrigger: {
-                //markers: true,
-                pin: true,
-                pinSpacing: i === galleries.length - 1 ? true : false,
-                pinType: isFirefox() ? "transform" : "fixed",
-                trigger: gallery, // starts counting the scroll once the container is in view
+                trigger: "#background-3", // starts counting the scroll once the container is in view
                 start: "top top",
-                end: i === galleries.length - 1 ? "bottom 35%" : "+=100%", // keeps it pinned for 1 viewport height
-                scrub: 1, // this ties the animation progress to scroll position //true for same speed
+                end: "bottom bottom",
                 ease: 'none',
-                toggleActions: "play none reverse none",
-                fastScrollEnd: true,
-                preventOverlaps: true,
-            }
-        })
-        .addLabel("fadeStart", 0.5) // halfway through the scroll
-        .fromTo(gallery, { opacity: 1 }, { opacity: 0, ease: "none" }, "fadeStart");
-    });
-}
+                scrub: 11, // this ties the animation progress to scroll position //true for same speed=
+            }    
+        });
+    }
 
-gallerySlide();
+    // Gallery --------------------------------------
+    
+    function connectAllGalleryButtons() {
+        
+        function galleryArrowAnimation (arrows, direction) {
+            arrows.forEach(element => {
+                element.addEventListener("click", function() {
+                    // animate the arrow button
+                    gsapWithCSS.fromTo( 
+                        element,
+                        {
+                            y: 30,
+                            x: 30 * direction,
+                            rotation: 15 * direction,
+                        },
+                        {
+                            y: 0,
+                            x: 0,
+                            rotation: 0,
+                            duration: 0.4,
+                        }
+                    );
+
+                    // Animate the first and last images that are on the side, just opacity effect
+                    element.parentElement.querySelectorAll(".galleryItem1, .galleryItem3").forEach(itemElement => {
+                        gsapWithCSS.fromTo( 
+                            itemElement,
+                            {
+                                opacity: 0,
+                            },
+                            {
+                                opacity: 1,
+                                duration: 0.4,
+                            }
+                        );
+                    });
+
+                    // animate image that is in focus, will rotate slightly in the direction of the arrow pressed
+                    gsapWithCSS.fromTo( 
+                        element.parentElement.querySelector(".galleryItem2"),
+                        {
+                            y: 30,
+                            scale: 0.95,
+                            rotation: 2 * direction,
+                        },
+                        {
+                            y: 0,
+                            scale: 1,
+                            rotation: 0,
+                            duration: 0.4,
+                        }
+                    );
+                });
+            });
+        }
+        let galleryRightArrowBtns = document.querySelectorAll(".galleryRightArrow");
+        let galleryArrowLeftBtns = document.querySelectorAll(".galleryLeftArrow");
+
+        galleryArrowAnimation (galleryRightArrowBtns, 1);
+        galleryArrowAnimation (galleryArrowLeftBtns, -1);
+    }
+
+    function isFirefox() {
+        return navigator.userAgent.toLowerCase().indexOf('firefox') > -1; // for the jittery performance on firefox
+    }
+
+    // Gallery transition as you scroll, pinned card effect
+    function gallerySlide() {
+        var galleries = document.querySelectorAll(".gallery");
+
+        galleries.forEach((gallery, i) => {
+            gsapWithCSS.timeline({
+                scrollTrigger: {
+                    //markers: true,
+                    pin: true,
+                    pinSpacing: i === galleries.length - 1 ? true : false,
+                    pinType: isFirefox() ? "transform" : "fixed",
+                    trigger: gallery, // starts counting the scroll once the container is in view
+                    start: "top top",
+                    end: i === galleries.length - 1 ? "bottom 35%" : "+=100%", // keeps it pinned for 1 viewport height
+                    scrub: 1, // this ties the animation progress to scroll position //true for same speed
+                    ease: 'none',
+                    toggleActions: "play none reverse none",
+                    fastScrollEnd: true,
+                    preventOverlaps: true,
+                }
+            })
+            .addLabel("fadeStart", 0.5) // halfway through the scroll
+            .fromTo(gallery, { opacity: 1 }, { opacity: 0, ease: "none" }, "fadeStart");
+        });
+    }
 }
 //# sourceMappingURL=animations.bundle.js.map
